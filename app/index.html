@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MS Paint</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./css/index.css" />
+</head>
+
+<body>
+  <div class="titlebar">
+    <img class="title-icon" src="./img/app_icon.png" alt="Paint">
+    <div class="title">
+      untitled - Paint
+    </div>
+    <button class="window-button minimize"></button>
+    <button class="window-button toggle"></button>
+    <button class="window-button close"></button>
+  </div>
+  <nav>
+
+  </nav>
+
+  <main>
+    <div class="sidebar">
+      <div class="border-horizontal"></div>
+      <div class="toolbar">
+        <div class="tool select-poly" data-tool="select-poly"></div>
+        <div class="tool select-rect" data-tool="select-rect"></div>
+        <div class="tool eraser" data-tool="eraser"></div>
+        <div class="tool fill-color" data-tool="fill-color"></div>
+        <div class="tool pipette" data-tool="pipette"></div>
+        <div class="tool magnifier" data-tool="magnifier"></div>
+        <div class="tool pencil" data-tool="pencil"></div>
+        <div class="tool brush" data-tool="brush"></div>
+        <div class="tool spray" data-tool="spray"></div>
+        <div class="tool text" data-tool="text"></div>
+        <div class="tool draw-line" data-tool="draw-line"></div>
+        <div class="tool draw-curve" data-tool="draw-curve"></div>
+        <div class="tool draw-rect" data-tool="draw-rect"></div>
+        <div class="tool draw-poly" data-tool="draw-poly"></div>
+        <div class="tool draw-oval" data-tool="draw-oval"></div>
+        <div class="tool draw-rect-rounded" data-tool="draw-rect-rounded"></div>
+      </div>
+    </div>
+    <div class="panel-wrapper">
+      <div class="panel"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="color-bar"></div>
+    <div class="border-horizontal mb-2"></div>
+    <div class="bottom-bar">
+      <div class="inset-info">For Help, click Help Topics on the Help Menu.</div>
+      <div class="inset-info"></div>
+      <div class="inset-info"></div>
+    </div>
+  </footer>
+</body>
+<script>
+  require('./js/index.js')
+</script>
+
+</html>

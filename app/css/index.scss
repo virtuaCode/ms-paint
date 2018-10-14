@@ -1,0 +1,261 @@
+@font-face {
+  font-family: 'ms-sans-serif-bold';
+  src: url(../fonts/ms-sans-serif-bold.ttf) format('truetype');
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  font-family: 'Microsoft Sans Serif';
+}
+
+body {
+  box-sizing: border-box;
+  padding: 4px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px #dfdfdf, inset -2px -2px 0px #808080, inset 2px 2px 0px white;
+  min-height: 100vh;
+  display: flex;
+  background-color: #c0c0c0;
+  flex-direction: column;
+  &.maximized {
+    padding: 0px;
+    box-shadow: none;
+  }
+}
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.titlebar {
+  display: flex;
+  flex-direction: row;
+  background-color: #000080;
+  color: white;
+  font-weight: bold;
+  height: 18px;
+  padding: 0px 2px;
+  margin-bottom: 1px;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+.title-icon {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title {
+  flex: 1;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-family: "ms-sans-serif-bold";
+}
+
+.window-button {
+  padding: 0px;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  background-color: #c0c0c0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image: url('../img/window_buttons.png');
+  width: 16px;
+  height: 14px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px white, inset -2px -2px #808080, inset 2px 2px 0px #dfdfdf;
+  -webkit-app-region: no-drag;
+  &:active {
+    background-position-y: 1px;
+    box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px #dfdfdf, inset 2px 2px 0px #808080;
+  }
+  &.minimize {
+    background-position-x: 0px;
+    &:active {
+      background-position-x: 1px;
+    }
+  }
+  &.toggle {
+    background-position-x: -32px;
+    &:active {
+      background-position-x: -31px;
+    }
+  }
+  &.toggle.maximized {
+    background-position-x: -16px;
+    &:active {
+      background-position-x: -15px;
+    }
+  }
+  &.close {
+    margin-left: 2px;
+    background-position-x: -48px;
+    &:active {
+      background-position-x: -47px;
+    }
+  }
+}
+
+nav {
+  height: 18px;
+  margin-bottom: 1px;
+}
+
+.panel-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px #808080, inset -2px -2px 0px #dfdfdf, inset 2px 2px 0px black;
+}
+
+.panel {
+  flex: 1;
+  background: white;
+  overflow: scroll;
+  margin: 2px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+  min-width: 56px;
+  margin-right: 1px;
+}
+
+.toolbar {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  width: 50px;
+  flex-wrap: wrap;
+  margin-top: -2px;
+  margin-right: 2px;
+}
+
+@mixin tool($x,
+$y) {
+  background-image: url('../img/tools.png');
+  background-position: ($x * -25px) ($y * -25px);
+  &:active, &.active {
+    background-image: url('../img/tools.png'), url('../img/tool_bg.png');
+    background-position: ($x * -25px + 1px) ($y * -25px + 1px), 0px 0px;
+    box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+  }
+}
+
+.tool {
+  width: 25px;
+  height: 25px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px white, inset -2px -2px 0px #808080;
+  &.select-poly {
+    @include tool(0,
+    0);
+  }
+  &.select-rect {
+    @include tool(1,
+    0);
+  }
+  &.eraser {
+    @include tool(0,
+    1);
+  }
+  &.fill-color {
+    @include tool(1,
+    1);
+  }
+  &.pipette {
+    @include tool(0,
+    2);
+  }
+  &.magnifier {
+    @include tool(1,
+    2);
+  }
+  &.pencil {
+    @include tool(0,
+    3);
+  }
+  &.brush {
+    @include tool(1,
+    3);
+  }
+  &.spray {
+    @include tool(0,
+    4);
+  }
+  &.text {
+    @include tool(1,
+    4);
+  }
+  &.draw-line {
+    @include tool(0,
+    5);
+  }
+  &.draw-curve {
+    @include tool(1,
+    5);
+  }
+  &.draw-rect {
+    @include tool(0,
+    6);
+  }
+  &.draw-poly {
+    @include tool(1,
+    6);
+  }
+  &.draw-oval {
+    @include tool(0,
+    7);
+  }
+  &.draw-rect-rounded {
+    @include tool(1,
+    7);
+  }
+}
+
+footer {
+  flex: 0;
+}
+
+.border-horizontal {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid white;
+  z-index: 1;
+}
+
+.mb-2 {
+  margin-bottom: 2px;
+}
+
+.border-vertical {}
+
+.color-bar {
+  height: 56px;
+}
+
+.bottom-bar {
+  height: 21px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inset-info {
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 115px;
+  padding: 2px;
+  margin-left: 2px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px #808080;
+}
+
+.inset-info:first-child {
+  margin-left: 4px;
+  flex: 1;
+}

@@ -1,0 +1,329 @@
+@font-face {
+  font-family: "ms-sans-serif-bold";
+  src: url(../fonts/ms-sans-serif-bold.ttf) format("truetype");
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  font-family: "Microsoft Sans Serif";
+}
+
+body {
+  box-sizing: border-box;
+  padding: 4px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px #dfdfdf, inset -2px -2px 0px #808080, inset 2px 2px 0px white;
+  min-height: 100vh;
+  display: flex;
+  background-color: #c0c0c0;
+  flex-direction: column;
+}
+body.maximized {
+  padding: 0px;
+  box-shadow: none;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.titlebar {
+  display: flex;
+  flex-direction: row;
+  background-color: #000080;
+  color: white;
+  font-weight: bold;
+  height: 18px;
+  padding: 0px 2px;
+  margin-bottom: 1px;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+.title-icon {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title {
+  flex: 1;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-family: "ms-sans-serif-bold";
+}
+
+.window-button {
+  padding: 0px;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  background-color: #c0c0c0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image: url("../img/window_buttons.png");
+  width: 16px;
+  height: 14px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px white, inset -2px -2px #808080, inset 2px 2px 0px #dfdfdf;
+  -webkit-app-region: no-drag;
+}
+.window-button:active {
+  background-position-y: 1px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px #dfdfdf, inset 2px 2px 0px #808080;
+}
+.window-button.minimize {
+  background-position-x: 0px;
+}
+.window-button.minimize:active {
+  background-position-x: 1px;
+}
+.window-button.toggle {
+  background-position-x: -32px;
+}
+.window-button.toggle:active {
+  background-position-x: -31px;
+}
+.window-button.toggle.maximized {
+  background-position-x: -16px;
+}
+.window-button.toggle.maximized:active {
+  background-position-x: -15px;
+}
+.window-button.close {
+  margin-left: 2px;
+  background-position-x: -48px;
+}
+.window-button.close:active {
+  background-position-x: -47px;
+}
+
+nav {
+  height: 18px;
+  margin-bottom: 1px;
+}
+
+.panel-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px #808080, inset -2px -2px 0px #dfdfdf, inset 2px 2px 0px black;
+}
+
+.panel {
+  flex: 1;
+  background: white;
+  overflow: scroll;
+  margin: 2px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+  min-width: 56px;
+  margin-right: 1px;
+}
+
+.toolbar {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  width: 50px;
+  flex-wrap: wrap;
+  margin-top: -2px;
+  margin-right: 2px;
+}
+
+.tool {
+  width: 25px;
+  height: 25px;
+  box-shadow: inset -1px -1px 0px black, inset 1px 1px 0px white, inset -2px -2px 0px #808080;
+}
+.tool.select-poly {
+  background-image: url("../img/tools.png");
+  background-position: 0px 0px;
+}
+.tool.select-poly:active, .tool.select-poly.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px 1px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.select-rect {
+  background-image: url("../img/tools.png");
+  background-position: -25px 0px;
+}
+.tool.select-rect:active, .tool.select-rect.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px 1px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.eraser {
+  background-image: url("../img/tools.png");
+  background-position: 0px -25px;
+}
+.tool.eraser:active, .tool.eraser.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -24px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.fill-color {
+  background-image: url("../img/tools.png");
+  background-position: -25px -25px;
+}
+.tool.fill-color:active, .tool.fill-color.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -24px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.pipette {
+  background-image: url("../img/tools.png");
+  background-position: 0px -50px;
+}
+.tool.pipette:active, .tool.pipette.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -49px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.magnifier {
+  background-image: url("../img/tools.png");
+  background-position: -25px -50px;
+}
+.tool.magnifier:active, .tool.magnifier.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -49px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.pencil {
+  background-image: url("../img/tools.png");
+  background-position: 0px -75px;
+}
+.tool.pencil:active, .tool.pencil.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -74px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.brush {
+  background-image: url("../img/tools.png");
+  background-position: -25px -75px;
+}
+.tool.brush:active, .tool.brush.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -74px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.spray {
+  background-image: url("../img/tools.png");
+  background-position: 0px -100px;
+}
+.tool.spray:active, .tool.spray.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -99px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.text {
+  background-image: url("../img/tools.png");
+  background-position: -25px -100px;
+}
+.tool.text:active, .tool.text.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -99px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-line {
+  background-image: url("../img/tools.png");
+  background-position: 0px -125px;
+}
+.tool.draw-line:active, .tool.draw-line.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -124px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-curve {
+  background-image: url("../img/tools.png");
+  background-position: -25px -125px;
+}
+.tool.draw-curve:active, .tool.draw-curve.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -124px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-rect {
+  background-image: url("../img/tools.png");
+  background-position: 0px -150px;
+}
+.tool.draw-rect:active, .tool.draw-rect.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -149px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-poly {
+  background-image: url("../img/tools.png");
+  background-position: -25px -150px;
+}
+.tool.draw-poly:active, .tool.draw-poly.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -149px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-oval {
+  background-image: url("../img/tools.png");
+  background-position: 0px -175px;
+}
+.tool.draw-oval:active, .tool.draw-oval.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: 1px -174px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+.tool.draw-rect-rounded {
+  background-image: url("../img/tools.png");
+  background-position: -25px -175px;
+}
+.tool.draw-rect-rounded:active, .tool.draw-rect-rounded.active {
+  background-image: url("../img/tools.png"), url("../img/tool_bg.png");
+  background-position: -24px -174px, 0px 0px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px black, inset -2px -2px 0px #c0c0c0, inset 2px 2px 0px #808080;
+}
+
+footer {
+  flex: 0;
+}
+
+.border-horizontal {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid white;
+  z-index: 1;
+}
+
+.mb-2 {
+  margin-bottom: 2px;
+}
+
+.color-bar {
+  height: 56px;
+}
+
+.bottom-bar {
+  height: 21px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inset-info {
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 115px;
+  padding: 2px;
+  margin-left: 2px;
+  box-shadow: inset -1px -1px 0px white, inset 1px 1px 0px #808080;
+}
+
+.inset-info:first-child {
+  margin-left: 4px;
+  flex: 1;
+}
+
+/*# sourceMappingURL=index.css.map */

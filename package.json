@@ -1,0 +1,21 @@
+{
+  "name": "ms-paint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:dev": "npm run build:sass && npm run start",
+    "build:sass": "sass app/css/index.scss:app/css/index.css",
+    "dev": "nodemon -e js,scss,html --exec npm run start:dev"
+  },
+  "author": "virtuaCode",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^3.0.4",
+    "eslint": "^5.7.0",
+    "nodemon": "^1.18.4",
+    "sass": "^1.14.2"
+  },
+  "dependencies": {}
+}
